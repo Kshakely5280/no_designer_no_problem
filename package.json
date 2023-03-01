@@ -1,0 +1,25 @@
+{
+  "name": "no_designer_no_problem",
+  "version": "1.0.0",
+  "description": "logo generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kshakely5280/no_designer_no_problem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kshakely5280/no_designer_no_problem/issues"
+  },
+  "homepage": "https://github.com/Kshakely5280/no_designer_no_problem#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
