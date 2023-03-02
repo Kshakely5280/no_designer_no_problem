@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Kshakely5280/no_designer_no_problem#readme",
   "dependencies": {
+    "color": "^4.2.3",
     "inquirer": "^8.2.4"
   }
 }

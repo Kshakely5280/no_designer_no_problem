@@ -3,13 +3,25 @@ const inquirer = require("inquirer");
 const Color = require("color");
 //const generateSVG = require()
 
+// class LogoPrompt {
+//   constructor() {
+//     this.logoLetters = null;
+//     this.shapes = null;
+//     this.textColor = null;
+//     this.shapeColor = null;
+//   }
+// }
+
 // user prompts for custom logo
 inquirer
-  .Prompt([
+  .prompt([
     {
       type: "input",
       name: "logoLetters",
       message: "Please enter up to 3 characters for your logo",
+      validate: (input) => {
+        return input.length > 0 && input.length <= 3
+      }
       // need to add a test and parameter for this question
     },
     {
@@ -23,6 +35,7 @@ inquirer
       name: "textColor",
       message:
         "Choose the color of your logo text with the color keyword or a valid hexadecimal number",
+      // checks to make sure user input is valid using the color library
       validate: (input) => {
         const color = Color(input);
         return color.hex() === input.toUpperCase();
@@ -43,9 +56,12 @@ inquirer
   .then((information) => {
     const { logoLetters, shapes, textColor, shapeColor } = information;
     const svg = makeSVG(logoLetters, shapes, textColor, shapeColor);
-    fs.writeFile("logo.svg", svg), (err) =>
-    err ? console.error(err) : console.log("Generated logo.svg");
+    fs.writeFile("logo.svg", svg, (err) =>
+      err ? console.error(err) : console.log("Generated logo.svg")
+    );
   });
+
+module.exports = LogoPrompt;
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for text
