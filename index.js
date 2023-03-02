@@ -1,43 +1,51 @@
-const fs = require('fs')
-const inquirer = require('inquirer')
-const Color = require('color')
+const fs = require("fs");
+const inquirer = require("inquirer");
+const Color = require("color");
 //const generateSVG = require()
 
-
+// user prompts for custom logo
 inquirer
-.Prompt([
+  .Prompt([
     {
-        type: 'input',
-        name: 'logoLetters',
-        message: 'Please enter up to 3 characters for your logo'
+      type: "input",
+      name: "logoLetters",
+      message: "Please enter up to 3 characters for your logo",
+      // need to add a test and parameter for this question
     },
     {
-        type: 'list',
-        name: 'shapes',
-        message: 'Please choose a shape for your logo',
-        choices: ['circle', 'triangle', 'square']
+      type: "list",
+      name: "shapes",
+      message: "Please choose a shape for your logo",
+      choices: ["circle", "triangle", "square"],
     },
     {
-        type: 'input',
-        name: 'textColor',
-        message: 'Choose the color of your logo text with the color keyword or a valid hexadecimal number',
-        validate: (input) => {
-            const color = Color(input)
-            return color.hex() === input.toUpperCase()
-        }
+      type: "input",
+      name: "textColor",
+      message:
+        "Choose the color of your logo text with the color keyword or a valid hexadecimal number",
+      validate: (input) => {
+        const color = Color(input);
+        return color.hex() === input.toUpperCase();
+      },
     },
     {
-        type: 'input',
-        name: 'shapeColor',
-        message: 'Choose the color of your logo shape with the color keyword or a valid hexadecimal number',
-        validate: (input) => {
-            const color = Color(input)
-            return color.hex() === input.toUpperCase()
-        }
+      type: "input",
+      name: "shapeColor",
+      message:
+        "Choose the color of your logo shape with the color keyword or a valid hexadecimal number",
+      // checks to make sure user input is valid using the color library
+      validate: (input) => {
+        const color = Color(input);
+        return color.hex() === input.toUpperCase();
+      },
     },
-])
-
-
+  ])
+  .then((information) => {
+    const { logoLetters, shapes, textColor, shapeColor } = information;
+    const svg = makeSVG(logoLetters, shapes, textColor, shapeColor);
+    fs.writeFile("logo.svg", svg), (err) =>
+    err ? console.error(err) : console.log("Generated logo.svg");
+  });
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for text
