@@ -1,16 +1,9 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const Color = require("color");
-//const generateSVG = require()
+const makeSVG = require('./lib/makeSVG')
+const jest = require('jest')
 
-// class LogoPrompt {
-//   constructor() {
-//     this.logoLetters = null;
-//     this.shapes = null;
-//     this.textColor = null;
-//     this.shapeColor = null;
-//   }
-// }
 
 // user prompts for custom logo
 inquirer
@@ -36,10 +29,7 @@ inquirer
       message:
         "Choose the color of your logo text with the color keyword or a valid hexadecimal number",
       // checks to make sure user input is valid using the color library
-      validate: (input) => {
-        const color = Color(input);
-        return color.hex() === input.toUpperCase();
-      },
+
     },
     {
       type: "input",
@@ -47,10 +37,7 @@ inquirer
       message:
         "Choose the color of your logo shape with the color keyword or a valid hexadecimal number",
       // checks to make sure user input is valid using the color library
-      validate: (input) => {
-        const color = Color(input);
-        return color.hex() === input.toUpperCase();
-      },
+
     },
   ])
   .then((information) => {
@@ -61,16 +48,16 @@ inquirer
     );
   });
 
-module.exports = LogoPrompt;
+// module.exports = LogoPrompt;
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for text
 // THEN I can enter up to three characters
 // WHEN I am prompted for the text color
-// THEN I can enter a color keyword (OR a hexadecimal number)
+// THEN I can entter a color keyword (OR a hexadecimal number)
 // WHEN I am prompted for a shape
 // THEN I am presented with a list of shapes to choose from: circle, triangle, and square
-// WHEN I am prompted for the shape's color
+// WHEN I am prompted for he shape's color
 // THEN I can enter a color keyword (OR a hexadecimal number)
 // WHEN I have entered input for all the prompts
 // THEN an SVG file is created named `logo.svg`
