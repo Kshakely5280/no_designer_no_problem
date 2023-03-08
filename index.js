@@ -1,9 +1,8 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const Color = require("color");
-const makeSVG = require('./lib/makeSVG')
-const jest = require('jest')
-
+const makeSVG = require("./lib/makeSVG");
+const jest = require("jest");
 
 // user prompts for custom logo
 inquirer
@@ -13,9 +12,8 @@ inquirer
       name: "logoLetters",
       message: "Please enter up to 3 characters for your logo",
       validate: (input) => {
-        return input.length > 0 && input.length <= 3
-      }
-      // need to add a test and parameter for this question
+        return input.length > 0 && input.length <= 3;
+      },
     },
     {
       type: "list",
@@ -28,15 +26,28 @@ inquirer
       name: "textColor",
       message:
         "Choose the color of your logo text with the color keyword or a valid hexadecimal number",
-      // checks to make sure user input is valid using the color library
-
+        validate: (input) => {
+            try {
+                Color(input)
+                return true
+            } catch {
+                return "Please enter a VALID color keyword or hexidecimal, try 'white' or '#fff'"
+            }
+        }
     },
     {
       type: "input",
       name: "shapeColor",
       message:
         "Choose the color of your logo shape with the color keyword or a valid hexadecimal number",
-      // checks to make sure user input is valid using the color library
+        validate: (input) => {
+            try {
+                Color(input)
+                return true
+            } catch {
+                return "Please enter a VALID color keyword or hexidecimal, try 'yellow' or '#ffff00'"
+            }
+        }
 
     },
   ])
