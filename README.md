@@ -17,6 +17,6 @@ N/A
 ### Application Testing <a name="test"></a>
 To test this app simply follow prompts after entering "node index" or a basic test has been made to check some preset values, access this test by running the script "npm test"
 ### Questions and Contact Information <a name="contact"></a>
-To see the video walkthrough, please click here: https://www.loom.com/share/62032da12baa48aa97ed72ae30d98d18. Please sent questions to shakelykyle@gmail.com or reach me through Github, link: https://github.com/kshakely5280
+To see the video walkthrough, please click here: https://www.loom.com/share/d1dfd43d1fd1407db7f32dd31533c428. Please sent questions to shakelykyle@gmail.com or reach me through Github, link: https://github.com/kshakely5280
 #### License Information <a name="license"></a>
 ##### Click to learn more about this license: [![License](https://img.shields.io/badge/License-unlicense-blue.svg)](https://opensource.org/licenses/unlicense)
